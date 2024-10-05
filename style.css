@@ -1,0 +1,231 @@
+/*
+Theme Name: Custom Landing Page
+Theme URI: http://example.com/
+Author: Your Name
+Author URI: http://example.com/
+Description: A custom landing page theme.
+Version: 1.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: custom-landing-page
+*/
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures the header stays above other elements */
+    display: flex;
+    align-items: center;
+    background-color: #0044cc;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+  }
+  
+  body {
+    padding-top: 70px; /* Adjust based on header height */
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  header img.logo {
+    height: 50px;
+    margin-right: 20px;
+  }
+  
+  .menu-toggle-checkbox {
+    display: none;
+  }
+  
+  .menu-toggle-label {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  .menu {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .menu-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .menu-item {
+    position: relative;
+  }
+  
+  .menu-item a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+  
+  .menu-item a:hover,
+  .menu-item a:focus {
+    color: #ffffff; /* Increased contrast */
+    background-color: rgba(255, 204, 0, 0.4); /* Higher opacity */
+  }
+  
+  .menu-item-has-children .sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0044cc;
+    padding: 10px 0;
+    list-style: none;
+    min-width: 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .menu-item-has-children:hover .sub-menu,
+  .menu-item-has-children:focus-within .sub-menu {
+    display: block;
+  }
+  
+  .sub-menu li {
+    margin: 5px 0;
+  }
+  
+  .sub-menu a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s;
+    display: block;
+    padding: 5px 20px;
+  }
+  
+  .sub-menu a:hover,
+  .sub-menu a:focus {
+    color: #ffffff; /* Increased contrast */
+    background-color: rgba(255, 204, 0, 0.4); /* Higher opacity */
+  }
+  
+  @media (max-width: 768px) {
+    .menu {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      background-color: #0044cc;
+      padding: 10px;
+      position: absolute;
+      top: 60px; /* Adjust based on header height */
+      left: 0;
+      width: 100%;
+    }
+  
+    .menu-ul {
+      flex-direction: column;
+    }
+  
+    .menu-toggle-label {
+      display: block;
+      margin-left: auto;
+    }
+  
+    .menu-toggle-checkbox:checked + .menu-toggle-label + .menu {
+      display: flex;
+    }
+  
+    .menu-item-has-children .sub-menu {
+      position: static;
+      box-shadow: none;
+    }
+  
+    .menu-item-has-children:hover .sub-menu {
+      display: none; /* Disable hover on mobile */
+    }
+  
+    .menu-item-has-children .sub-menu {
+      display: none;
+    }
+  
+    .menu-item-has-children:focus-within .sub-menu,
+    .menu-item-has-children .sub-menu:hover {
+      display: block;
+    }
+  
+    .desktop-only {
+      display: none;
+    }
+  
+    .mobile-only {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .mobile-only {
+      display: none;
+    }
+  
+    .desktop-only {
+      display: block;
+    }
+  }
+  
+  .content-area {
+    padding: 20px;
+  }
+  
+  footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    position: relative;
+    /* No fixed positioning as per requirements */
+  }
+  
+  .footer-content a {
+    color: #ffcc00;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-content a:hover,
+  .footer-content a:focus {
+    color: #ffffff;
+  }
+  
+  /* Additional Styling for Accessibility and Enhancements */
+  
+  /* Focus States for Accessibility */
+  .menu-item a:focus,
+  .sub-menu a:focus {
+    outline: 3px solid #ffcc00;
+    outline-offset: 2px;
+  }
+  
+  /* Smooth Transition for Menu Toggle */
+  .menu {
+    transition: max-height 0.3s ease-in-out;
+  }
+  
+  /* Ensure that menus are visible by default for graceful degradation */
+  .menu {
+    display: flex;
+  }
+  
